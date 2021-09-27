@@ -1,0 +1,104 @@
+<div class="animate__animated animate__fadeIn">
+  <div style="background-image: url('assets/images/pizarra/pizarrakids-azul.png'); padding: 0px; height: auto">
+    <div class="">
+      <!-- navbar -->
+      <div style="background-image: url('assets/images/pizarra/PIZARRA_KIDS_Encabezado3.png')
+    ; height: 150px; opacity: 0.9; background-attachment: fixed;">
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 animate__animated animate__backInRight"
+            style="padding-top: 15px; padding-left:60px ;">
+            <img src="assets/images/pizarra/logo1.png" width="200px">
+
+            <button type="button" class="btn btn-outline-success" *ngIf="token" routerLink="/kid/{{correo}}">
+              Kid
+            </button>
+
+            &nbsp;
+            <!-- Boton Modal Iniciar Sesión -->
+            <button type="button" class="btn btn-outline-warning" *ngIf="!token" data-toggle="modal"
+              data-target="#login">
+              Iniciar Sesión
+            </button>
+
+            <button type="button" class="btn btn-outline-danger" *ngIf="token" (click)="cerrarSesion()">
+              Cerrar Sesión
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- fin de navbar -->
+
+      <div class="row">
+
+        <div class="col-lg-12 col-md-12 scrollY style-4" style="padding: 40px;">
+
+          <div class="card" style="background-image: url('assets/images/pizarra/pizarrakids-verde.png');">
+
+            <div class="row">
+              <div class="col-lg-4 col-4-md" style="padding-left:30px; padding-top: 10px;">
+                <div *ngFor="let item of hijo">
+                  <div *ngIf="item.correo == correo">
+                    <img style="border-radius: 50%;" src="assets/fotos/estudiantes/{{item.avatar}}" width="30%">
+                    <!-- <img type="button" src="assets/fotos/estudiantes/{{item.avatar}}" width="15%"> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 m-5">
+                <img src="assets/images/pizarra/Misdeberes.png" width="250px">
+              </div>
+              <div class="col-lg-4 col-md-4">
+
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Se repiten las cards de los deberes -->
+              <div class="col-lg-3 col-md-3 col-sm-3" *ngFor="let item of deber" style="padding: 30px;">
+                <!-- Si el estado del deber es ENTREGADO -->
+                <ng-container *ngIf="item.estado == 'ENTREGADO'; else elseTemplate">
+                  <div class="card shadow text-center"
+                    style="height: 150px; font-size: 12px; background-color: yellowgreen ;">
+                    <a routerLink="/deber-detalle/{{correo}}/{{item.deber_id}}/{{item.id}}">
+                      <div class="row text-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <strong class="card title">{{item.estado}}</strong>
+                        </div>
+                      </div>
+                      <div class="row text-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <h6>{{item.tema}}</h6>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </ng-container>
+                <!-- Si el estado del deber es NO ENTREGADO -->
+                <ng-template #elseTemplate>
+                  <div class="card shadow text-center" style="height: 150px; font-size: 12px; background-color: lightblue ;">
+                    <a routerLink="/deber-detalle/{{correo}}/{{item.deber_id}}/{{item.id}}">
+                      <div class="row text-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <strong class="card title">{{item.estado}}</strong>
+                        </div>
+                      </div>
+                      <div class="row text-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <h6>{{item.tema}}</h6>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </ng-template>
+
+
+              </div>
+              <!-- Se terminan las cards de los deberes -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

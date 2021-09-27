@@ -1,0 +1,166 @@
+<div class="animate__animated animate__fadeIn">
+  <div style="background-image: url('assets/images/pizarra/pizarrakids-azul.png'); padding: 0px;">
+    <div class="">
+      <!-- navbar -->
+      <div style="background-image: url('assets/images/pizarra/PIZARRA_KIDS_Encabezado3.png')
+    ; height: 150px; opacity: 0.9; background-attachment: fixed;">
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 animate__animated animate__backInRight"
+            style="padding-top: 15px; padding-left:60px ;">
+            <img src="assets/images/pizarra/logo1.png" width="200px">
+
+            <button type="button" class="btn btn-outline-success" *ngIf="token" routerLink="/site">
+              Mi Sitio
+            </button>
+
+            &nbsp;
+            <!-- Boton Modal Iniciar Sesión -->
+            <button type="button" class="btn btn-outline-warning" *ngIf="!token" data-toggle="modal"
+              data-target="#login">
+              Iniciar Sesión
+            </button>
+
+            <button type="button" class="btn btn-outline-danger" *ngIf="token" (click)="cerrarSesion()">
+              Cerrar Sesión
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- fin de navbar -->
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-3 text-center" style="padding-left: 10px; padding-top: 15px;">
+          <div class="card" style="opacity:0.7;">
+
+            <div class="">
+              <div id="list-example" class="list-group">
+                <a class="list-group-item list-group-item-action btn btn-primary" type="button" (click)="Anecdotario()">
+                  <strong>
+                    Anecdotario
+                  </strong>
+                </a>
+                <a class="list-group-item list-group-item-action btn btn-primary" type="button"
+                  routerLink="/deber/{{correo}}">
+                  <strong>
+                    Deberes
+                  </strong>
+                </a>
+                <!-- <a class="list-group-item list-group-item-action btn btn-primary" type="button">
+                  <strong>
+                    Calificaciones
+                  </strong>
+                </a>
+                <a class="list-group-item list-group-item-action btn btn-primary" type="button">
+                  <strong>
+                    Juegos
+                  </strong>
+                </a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 scrollY style-4">
+
+          <div *ngFor="let item of anecdotario" style="padding: 15px;">
+            <div class="card shadow" style="background-image: url('assets/images/pizarra/pizarrakids-verde.png');">
+              <div class="card-header text-center" style="color: white;">
+                <div class="text-left" *ngIf="item.calificacion == 1">
+                  <i class="far fa-grin-beam-sweat" style="font-size: 30px; color: green;" title="No Adquirido"></i>
+                </div>
+                <div class="text-left" *ngIf="item.calificacion == 2">
+                  <i class="far fa-grin-tongue-wink" style="font-size: 30px; color: green;" title="En proceso"></i>
+                </div>
+                <div class="text-left" *ngIf="item.calificacion == 3">
+                  <i class="far fa-laugh-beam" style="font-size: 30px; color: green;" title="Adquirido"></i>
+                </div>
+                {{item.foto.substr(0,10)}}
+              </div>
+              <div class="text-center">
+                <ng-container *ngIf="item.foto.substr(-4) == '.mp4'; else elseTemplate">
+                  <video id="medio" width="300" height="200" controls>
+                    <source src="{{anecdotaUrl+item.foto}}">
+                    <source src="video.ogv">
+                    Tu navegador no soporta vídeo
+                  </video>
+                </ng-container>
+                <ng-template #elseTemplate>
+                  <img src="{{anecdotaUrl+item.foto}}" alt="No hay vista previa de la actividad" width="70%"
+                    style="padding-left: 40px; padding-top: 40px; padding-right: 40px; padding-bottom: 10px;"
+                    class="rounded mx-auto d-block">
+                </ng-template>
+              </div>
+              <div class="card-body" style="color: white;">
+                <hr>
+                <!-- <p style="color:#1073b0; opacity: 1; padding: 4px;"></p> -->
+                <p style="color:white; opacity: 1; padding: 4px;">
+                  <strong>Descripción </strong>
+                </p>
+                <p>
+                  {{item.descripcion}}
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda praesentium veniam rem debitis,
+                  enim iure quis repellat vero soluta expedita odio ratione, asperiores eos aliquid delectus, eius
+                  nisi
+                  velit provident.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- 3 COLUMNA DONDE MUESTRA FOTO DEL NIÑO -->
+        <div class="col-lg-3 col-md-3 scrollY style-4" style="padding: 15px;">
+          <div *ngFor="let item of hijos">
+            <div *ngIf="item.correo == correo">
+              <!-- SI PERTENECE A LOS VAQUEROS -->
+              <ng-container *ngIf="item.curso == 'VAQUEROS'; else elseTemplate">
+                <div class="card" style="border-radius: 60%; padding-top: 15px; background-image: url('assets/images/pizarra/vaqueros.jpg');">
+                  <div *ngIf="correo == item.correo">
+                    <div class="row text-center">
+                      <div class="col-lg-12 col-md-12">
+                        <img src="assets/fotos/estudiantes/{{item.avatar}}" width="30%">
+                      </div>
+                    </div>
+                    <div class="row text-center">
+                      <div class="col-lg-12 col-md-12" style="font-size: 12px;">
+                        <strong>{{item.nombres}} {{item.apellidos}}</strong>
+                        <br>
+                        <strong>"{{item.nickname}}"</strong>
+                        <br>
+                        <strong>{{item.curso}} - {{item.paralelo}}</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <!-- SI PERTENECE A LOS MARICANOS -->
+              <ng-template #elseTemplate>
+                <div class="card" style="border-radius: 60%; padding-top: 15px; background-image: url('assets/images/pizarra/marciano2.jpg');">
+                  <div *ngIf="correo == item.correo">
+                    <div class="row text-center">
+                      <div class="col-lg-12 col-md-12">
+                        <img src="assets/fotos/estudiantes/{{item.avatar}}" width="30%">
+                      </div>
+                    </div>
+                    <div class="row text-center">
+                      <div class="col-lg-12 col-md-12" style="font-size: 12px;">
+                        <strong>{{item.nombres}} {{item.apellidos}}</strong>
+                        <br>
+                        <strong>"{{item.nickname}}"</strong>
+                        <br>
+                        <strong>{{item.curso}} - {{item.paralelo}}</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

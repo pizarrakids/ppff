@@ -1,0 +1,135 @@
+<div class="animate__animated animate__fadeIn" style="background-image: url('assets/images/pizarra/fondo4.jpg');
+        background-repeat: no-repeat;background-attachment: fixed;">
+
+  <div class="">
+    <!-- navbar -->
+    <div style="background-image: url('assets/images/pizarra/PIZARRA_KIDS_Encabezado3.png')
+            ; height: 150px; opacity: 0.9; background-attachment: fixed;">
+
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 animate__animated animate__backInRight"
+          style="padding-top: 15px; padding-left:60px ;">
+          <img src="assets/images/pizarra/logo1.png" width="200px">
+
+          <button type="button" class="btn btn-outline-success" *ngIf="token" routerLink="/site">
+            Mi Sitio
+          </button>
+
+          &nbsp;
+
+          <button type="button" class="btn btn-outline-danger" *ngIf="token" (click)="cerrarSesion()">
+            Cerrar Sesión
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <!-- fin de navbar -->
+
+    <!-- Banner -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12" style="background-image: url('assets/images/pizarra/nino4.jpg')
+      ; width: 100%; height: 600px; opacity: 1; background-attachment: fixed; ">
+
+        <div class="col-lg-4" style="float: right; padding: 15px;" *ngIf="!token">
+          <div class="card shadow" style="padding: 20px; background-color: #6cc43a; opacity: 0.75; color: white;">
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <h4>Iniciar Sesión</h4>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <img src="assets/images/pizarra/gif2.gif" width="100px">
+              </div>
+            </div>
+            <hr>
+            <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  name="email" ngModel required />
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña:</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password" ngModel
+                  required />
+              </div>
+
+              <div align="right">
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- Fin Banner -->
+
+    <!-- para utilizar camara
+  <input type="file" capture="camera" accept="image/*"> -->
+
+
+    <div class="row" style="padding: 40px;">
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="card border-success shadow" style="padding: 30px; width: 100%;
+            background-color: #6cc43a; opacity: 0.75; color:white">
+          <!-- carta de desarrollo web -->
+          <div class="row text-center" style="height: 100px;">
+            <div class="col-lg-12 col-md-12">
+              <img src="assets/images/pizarra/red-mundial.png" width="90px">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <h5 style="font-size: 14px; font-family: Georgia, 'Times New Roman', Times, serif;">
+                Desarrollo de páginas Web con personalización pedida por los clientes.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="card border-danger shadow" style="padding: 30px; width: 100%;
+              background-color: #f93738; opacity: 0.75; color:white">
+          <!-- carta de Big Data -->
+          <div class="row text-center" style="height: 100px;">
+            <div class="col-lg-12 col-md-12">
+              <img src="assets/images/pizarra/big-data.png" width="90px">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <h5 style="font-size: 14px; font-family: Georgia, 'Times New Roman', Times, serif;">
+                Análisis de Big Data, lo que tu empresa necesita en la analítica de tus datos.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="card border-primary shadow" style="padding: 30px; width: 100%; color:white;
+              background-color: blue; opacity: 0.75;">
+          <!-- carta de Desarrollo de Software-->
+          <div class="row text-center" style="height: 100px;">
+            <div class="col-lg-12 col-md-12">
+              <img src="assets/images/pizarra/desarrollo-de-software.png" width="90px">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <h5 style="font-size: 14px; font-family: Georgia, 'Times New Roman', Times, serif;">
+                Desarrollo de Software y personalización de tu sistema.
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
