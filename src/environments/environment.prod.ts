@@ -1,5 +1,5 @@
 export const environment = {
   //production: true
-  apiUrl: 'http://192.168.100.150/codigneiter/index.php/',
-  anecdotaUrl: 'http://192.168.100.150/codigneiter/uploads/',
+  apiUrl: 'https://104.128.64.217/pizarra/backend/index.php/',
+  anecdotaUrl: 'https://104.128.64.217/pizarra/backend/uploads/',
 };

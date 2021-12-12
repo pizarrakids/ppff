@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pizarrakidspf"
+    }
+  },
+  "defaultProject": "pizarrakidspf",
+  "cli": {
+    "analytics": false
+  }
 }
